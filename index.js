@@ -106,10 +106,9 @@ const projectInput = () => {
             message: 'Choose a license for your project. (Required)',
             choices: [
                 "Apache license 2.0",
-                "Creative Commons license family",
-                "GNU General Public License family",
+                "Creative Commons Zero v1.0 Universal",
+                "GNU General Public License v3.0",
                 "ISC",
-                "Microsoft Public License",
                 "MIT",
                 "Mozilla Public License 2.0",
                 "The Unlicense",
