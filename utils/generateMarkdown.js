@@ -61,7 +61,13 @@ function renderLicenseLink(license) {
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
 function renderLicenseSection(license) {
-
+  for ( i = 0; i < licenseArray.length; i++ ) {
+    if ( license === licenseArray[i] ) {
+      return `Read more about ${licenseArray[i]} here:`;
+    } else {
+      return "";
+    }
+  }
 };
 
 // TODO: Create a function to generate markdown for README
