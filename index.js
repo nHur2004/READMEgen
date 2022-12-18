@@ -4,8 +4,8 @@ const fs = require('fs');
 const generateMarkdown = require('./utils/generateMarkdown');
 
 // TODO: Create an array of questions for user input
-const projectInput = () => {
-    return inquirer.createPromptModule([
+function projectInput () {
+    return inquirer.prompt([
         { // Title Input
             type: 'input',
             name: 'title',
@@ -68,7 +68,8 @@ const projectInput = () => {
             type: 'input',
             name: 'contribution',
             message: 'Explain guidelines for contributions to this project.',
-            when: ({ confirmContribution }) => confirmContribution
+            when: ({ confirmContribution }) => confirmContribution,
+            default: "N/A"
         },
         { // Tests Input
             type: 'confirm',
@@ -80,7 +81,8 @@ const projectInput = () => {
             type: 'input',
             name: 'test',
             message: 'Explain how to run tests for this application.',
-            when: ({ confirmTest }) => confirmTest
+            when: ({ confirmTest }) => confirmTest,
+            default: "N/A"
         },
         { // Questions Input
             type: 'confirm',
@@ -92,13 +94,15 @@ const projectInput = () => {
             type: 'input',
             name: 'qLink',
             message: 'Please enter your GitHub username.',
-            when: ({ questions }) => questions
+            when: ({ questions }) => questions,
+            default: "N/A"
         },
         {
             type: 'input',
             name: 'qemail',
             message: 'Please enter your email address.',
-            when: ({ questions }) => questions
+            when: ({ questions }) => questions,
+            default: "N/A"
         },
         { // License Input
             type: 'list',
@@ -112,6 +116,7 @@ const projectInput = () => {
                 "MIT",
                 "Mozilla Public License 2.0",
                 "The Unlicense",
+                "None"
             ]
         }
     ])
@@ -119,15 +124,15 @@ const projectInput = () => {
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
-    fs.appendFile(`${fileName}`, data, (err) =>
-        err ? console.log(err) : console.log(`${fileName}.md was made.`)
+    fs.appendFile(`${fileName}.md`, data, (err) =>
+        err ? console.error(err) : console.log(`${fileName}.md was made.`)
     );
 };
 
 // TODO: Create a function to initialize app
 async function init() {
-    let input = projectInput();
-    writeToFile(input.fileName, generateMarkdown(input));
+    let input = await projectInput();
+    writeToFile(input.title, generateMarkdown(input));
 };
 
 // Function call to initialize app

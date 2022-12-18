@@ -6,6 +6,7 @@ const licenseArray = [
   "MIT",
   "Mozilla Public License 2.0",
   "The Unlicense",
+  "None"
 ];
 const l = [
   "",
@@ -40,7 +41,7 @@ function renderLicenseBadge(license) {
   for ( i = 0; i < licenseArray.length; i++ ) {
     if ( license === licenseArray[i] ) {
       return `[![License${l[i]}](${licenseSVGArray[i]})](${licenseArray3[i]})`;
-    } else {
+    } if ( license === licenseArray[7] ) {
       return "";
     }
   }
@@ -51,8 +52,8 @@ function renderLicenseBadge(license) {
 function renderLicenseLink(license) {
   for ( i = 0; i < licenseArray.length; i++ ) {
     if ( license === licenseArray[i] ) {
-      return `[![License${l[i]}](${licenseArray3[i]})`;
-    } else {
+      return `[![License${l[i]}]](${licenseArray3[i]})`;
+    } if ( license === licenseArray[7] ) {
       return "";
     }
   }
@@ -64,7 +65,7 @@ function renderLicenseSection(license) {
   for ( i = 0; i < licenseArray.length; i++ ) {
     if ( license === licenseArray[i] ) {
       return `Read more about ${licenseArray[i]} here:`;
-    } else {
+    } if ( license === licenseArray[7] ) {
       return "";
     }
   }
@@ -77,6 +78,11 @@ function generateMarkdown(data) {
 ${renderLicenseBadge(data.license)}
 ## Description
 ${data.description}
+## Table of Contents
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contribution](#contribution)
+- [Tests](#test)
 ## Installation
 ${data.installation}
 ## Usage
