@@ -82,7 +82,7 @@ const projectInput = () => {
             message: 'Explain how to run tests for this application.',
             when: ({ confirmTest }) => confirmTest
         },
-        {
+        { // Questions Input
             type: 'confirm',
             name: 'questions',
             message: 'Would you like to link your GitHub profile and E-mail for questions?',
@@ -100,7 +100,7 @@ const projectInput = () => {
             message: 'Please enter your email address.',
             when: ({ questions }) => questions
         },
-        {
+        { // License Input
             type: 'list',
             name: 'license',
             message: 'Choose a license for your project. (Required)',
