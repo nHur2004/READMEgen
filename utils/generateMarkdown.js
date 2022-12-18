@@ -37,18 +37,25 @@ const licenseArray3 = [
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
 function renderLicenseBadge(license) {
-  for ( i = 0; i < licenseArray.length; i++ )
+  for ( i = 0; i < licenseArray.length; i++ ) {
     if ( license === licenseArray[i] ) {
       return `[![License${l[i]}](${licenseSVGArray[i]})](${licenseArray3[i]})`;
     } else {
       return "";
     }
+  }
 };
 
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
 function renderLicenseLink(license) {
-
+  for ( i = 0; i < licenseArray.length; i++ ) {
+    if ( license === licenseArray[i] ) {
+      return `[![License${l[i]}](${licenseArray3[i]})`;
+    } else {
+      return "";
+    }
+  }
 };
 
 // TODO: Create a function that returns the license section of README
